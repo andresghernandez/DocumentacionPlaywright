@@ -1,0 +1,280 @@
+Instalar visual studio code
+https://code.visualstudio.com/download
+instalar node js
+https://nodejs.org/en/download
+instalar playwright
+npm install -D playwright
+actualizar playwright
+npm install playwright@latest
+iniciar proyecto
+npm init playwright@latest
+
+ejecutar test
+
+npx playwright test
+npx playwright test --headed
+
+ver reporte
+npx playwright show-report
+
+ejecutar la prueba en modo ui
+npx playwright test --ui
+
+documentacion
+https://playwright.dev/docs/intro
+
+escribiendo pruebas
+https://playwright.dev/docs/next/writing-tests
+
+localizadores
+https://playwright.dev/docs/locators
+
+acciones
+https://playwright.dev/docs/api/class-locator
+
+generador de codigo y de localizadores
+https://playwright.dev/docs/next/codegen-intro
+npx playwright codegen demo.playwright.dev/todomvc
+
+ayuda para localizadores y grabador 
+https://playwright.dev/docs/codegen
+
+ejecutar test
+https://playwright.dev/docs/running-tests
+ejecutar un archivo especifico 
+npx playwright test landing-page.spec.ts
+ejecutar una carpeta especifica
+npx playwright test tests/todo-page/ tests/landing-page/
+ejecutar un archivo especifico con una palabra clave del nombre del archivo 
+npx playwright test sauc
+ejecutar una prueba con un nombre especifico 
+npx playwright test -g "test saucelab"
+
+npx playwright test -g "ServicesRegresion Get ReqRes"
+npx playwright test -g "ServicesRegresion"
+
+carpeta donde guarda el reporte
+https://playwright.dev/docs/test-reporters#html-reporter
+
+playwright jenkins
+https://kailash-pathak.medium.com/how-to-run-playwright-test-case-in-ci-cd-jenkins-82e604c71d18
+
+screenshot
+https://playwright.dev/docs/screenshots
+
+https://www.avalpaycenter.com/wps/portal/portal-de-pagos
+
+lista de eloementos
+https://playwright.dev/docs/locators
+
+------------------------------------------------------------------------
+videos 
+
+typescript
+
+
+iniciar el proyecto por consola en la carpeta escribir
+npm init playwright@latest
+
+en playwright.config.ts comentar los bnavegadores que no se van a usar 
+
+ejecutar test
+npx playwright test
+
+
+actualizacion de librerias
+npm outdated @playwright/test
+npm instal -D @playwright/test
+
+actualizacion de navegadores
+npx playwright install
+
+instalar para ejecutar en multiples ambientes
+npm i dotenv --save-dev
+
+
+guadar en github los ejemplos
+
+
+----------------
+pasos
+
+1 crear proyecto 
+iniciar el proyecto por consola en la carpeta escribir
+npm init playwright@latest
+
+2 agregar a playwright.config.ts 
+headless: false,
+
+3. crear el test
+import { test, expect } from '@playwright/test';
+
+test('pay center', async ({ page }) => {
+
+    
+});
+
+4. crear carpeta de pageobjects
+
+5. crear page HomePaycenterPage.ts
+identificar elementos
+
+
+
+6. llamar el page desde el test
+const homePayCenterPage = new HomePayCenterPage(page);
+
+7. funcion de abrir pagina 
+
+8. funcion de buscar 
+
+
+Automatizacion Laboratorio Playwright seleccionar banco, login banco av villas, caso facturador y caso no facturador 
+guardar repositorio en github y configurar con jenkins 
+
+ejecutar por consola
+npx playwright test paycenterfacturador.spec.ts
+npx playwright test paycenternofacturador.spec.ts
+
+instalar npm globalmente
+npm install npm -g
+
+
+
+Fundacion La Luz
+fundacion
+Fundacion Fundarvir
+
+conexion con jenkins
+https://www.youtube.com/watch?v=pm1FJq-
+
+
+
+instalar allure 
+npm i -D allure
+npm i -D @playwright/test allure-playwright
+
+ejecutar por consola
+npx playwright test paycenterfacturador.spec.ts
+npx playwright test paycenternofacturador.spec.ts --reporter=line,allure-playwright
+allure generate ./allure-results --clean
+allure open ./allure-report
+
+video screenshots
+https://playwrigh.dev/docs/test-use-options#recording-options
+
+ejecutar por consola
+npx playwright test paycenterfacturador.spec.ts
+npx playwright test paycenternofacturador.spec.ts
+npx playwright test services.spec.ts
+
+npm run nofacturador
+npm run facturador
+npm run servicios
+
+63941187 ya no
+63941186 ya no
+63941180 ya no
+63941179 ya no 
+  
+
+
+63941188
+
+Fundacion Fundarvir
+Fundacion La Luz
+Fundacion La Luz
+1234567890
+-----------------------------------------------------------------------------------------------------
+/html/body/apc-root/apc-billers/div/div/div[4]/div[2]/div/apc-input/input
+/html/body/apc-root/apc-billers/div/div/div[5]/div[2]/div/apc-input/input
+
+https://www.pasarelapagosaval.com/wps/portal/pasarela-de-pagos-aval-lz/bienvenidos/!ut/p/z1/hU65DoJAFPwWCkp5T4nK2lEYggUeheJrDMdyJLBLlgWPr3cTW5Xp5swAQQwkkrEuE11LkTSGX2l1izAI52yPeAgiD48s8s5bZOHJXcJlKkDGxh_w0fRpKrIDKhuZft74InW9EkjxgiuunEEZudK66zc22pi7o3yw_qXWeiFaJ2vkkBdKCu0Irm38tlDJXkP8twhdG-OM0ufdt6w3E541Ug!!/dz/d5/L2dBISEvZ0FBIS9nQSEh?token=22c858bf3992afaabb98638ab1be74505c897104c20068cea4610057babc77ea
+
+https://pasarelapagos.bancodebogota.co/?trazabilityCode=6042053688
+https://www.avvillas.com.co/bancadigital/pagos-aval-pay?a=00010524&trazabilityCode=6042055093
+
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Git clone') {
+            steps {
+                git 'https://github.com/andresghernandez/AvalPayCenterScreenplay.git'
+            }
+        }
+        
+        stage('install playwright'){
+            steps{
+                bat "npm i -D playwright@latest"
+                bat "npx playwright install"
+            }
+        }
+        
+        stage('test') {
+            steps {
+                bat "npm run nofacturador"
+                //bat "npm run facturador"
+                //bat "npm run servicios"
+                //bat "npx playwright test"
+            }
+        }
+    }
+}
+
+
+
+***********
+https://playwright.dev/docs/intro
+Actualización 
+Para actualizar Playwright a la última versión, ejecute el siguiente comando:
+npm install -D @playwright/test@latest  //iniciar el proyecto por consola en la carpeta escribir
+# Also download new browser binaries and their dependencies:
+npx playwright install --with-deps //actualizacion de navegadores
+
+-------------------------------------------------------------------------------------------------------
+
+C:\ProgramData\Jenkins\.jenkins\workspace\PlaywrightScreenplay
+
+C:\Users\UserQV\AppData\Local\ms-playwright
+
+trace 
+npx playwright test paycenterfacturador.spec.ts --trace on
+npx playwright test paycenternofacturador.spec.ts --trace on
+
+https://trace.playwright.dev/
+npx playwright show-report
+
+planilla de estimacion de tiemposa
+de los tiempos que he invertido en el laboratorio
+
+
+
+
+--------------------------------------------------
+https://www.npmjs.com/package/@testla/screenplay-playwright?activeTab=dependencies
+npm init playwright@latest
+npm i @testla/screenplay-playwright
+
+https://github.com/testla-project/testla-screenplay-playwright-js/blob/main/__tests__/web_playwright_locators.spec.ts
+
+https://www.youtube.com/watch?v=krKiPlET3jE
+npm init playwright@latest
+npm i @testla/screenplay-playwright
+
+}
+servicios
+https://github.com/testla-project/testla-screenplay-playwright-js/blob/main/__tests__/api.spec.ts
+
+
+----------------------- ---------
+cucumber no funicino el ejemplo esta en java script y page object model
+
+install 
+npm install @cucumber/cucumber
+
+ejecutar  
+
+node -v
